@@ -1,0 +1,38 @@
+type Article{
+    id: ID!
+    title: String!
+    content: String!
+    author: User!
+    likes: Int!
+    createdAt: String!
+    updatedAt: String!
+}
+
+type User{
+    id: ID!
+    username: String!
+    email: String!
+    password: String!
+    role: String!
+    createdAt: String!
+    updatedAt: String!
+}
+
+input ArticleInput{
+    title: String!
+    content: String!
+    author: ID!
+    likes: Int!
+}
+
+type Query{
+    articles: [Article!]!
+    article(id: ID!): Article
+}
+
+type Mutation{
+    createArticle(input: ArticleInput): Article!
+    updateArticle(id: ID!, input: ArticleInput): Article!
+    deleteArticle(id: ID!): Article!
+    likeArticle(id: ID!): Article!
+}

@@ -1,0 +1,46 @@
+type Comment {
+    id: ID!
+    content: String!
+    author: User!
+    article: Article!
+    createdAt: String!
+    updatedAt: String!
+}
+
+type Article {
+    id: ID!
+    title: String!
+    content: String!
+    author: User!
+    comments: [Comment!]!
+    likes: Int!
+    createdAt: String!
+    updatedAt: String!
+}
+
+type User {
+    id: ID!
+    username: String!
+    email: String!
+    password: String!
+    role: String!
+    createdAt: String!
+    updatedAt: String!
+}
+
+input CommentInput {
+    content: String!
+    articleId: ID!
+    authorId: ID!
+}
+
+type Query {
+    comments: [Comment!]!
+    comment(id: ID!): Comment
+}
+
+type Mutation {
+    createComment(input: CommentInput!): Comment!
+    updateComment(id: ID!, input: CommentInput!): Comment!
+    deleteComment(id: ID!): Comment!
+}
