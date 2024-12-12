@@ -1,0 +1,27 @@
+type Project {
+    id: ID!
+    name: String!
+    description: String!
+    tasks: [Task!]!
+    members: [User!]!
+    createdAt: String!
+    updatedAt: String!
+}
+
+
+input ProjectInput{
+    name: String!
+    description: String!
+    members: [ID!]!
+}
+
+type Query{
+    projects: [Project!]!
+    project(id: ID!): Project!
+}
+
+type Mutation{
+    createProject(input: ProjectInput!): Project!
+    updateProject(id: ID!, input: ProjectInput!): Project!
+    deleteProject(id: ID!): Project!
+}
